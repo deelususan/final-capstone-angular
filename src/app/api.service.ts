@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
 
-  private url :string = "localhost:8080/products/";
+  private url :string = "http://localhost:8080/products/";
+  private url1 :string = "http://localhost:8080/";
 
   constructor(private httpClient:HttpClient) { }
 
@@ -18,16 +19,25 @@ export class ApiService {
     return this.httpClient.get(`${this.url}/${cusine}`);
   }
 
-  public createProduct(product:any){
+  public addProduct(product:any){
     return this.httpClient.post(`${this.url}`,product);
   }
 
-  public updateProduct(id:string,product:any){
-    return this.httpClient.put(`${this.url}/${id}`,product);
+  public updateProductById(product:any){
+    return this.httpClient.put(`${this.url}`,product);
   }
 
-  public deleteProduct(id:string){
-    return this.httpClient.delete(`${this.url}/${id}`);
+  public deleteProductById(id:string){
+    return this.httpClient.delete(`${this.url}deleteproduct/${id}`);
   }
+
+  public getOneProduct(id:string){
+    return this.httpClient.get(`${this.url}details/${id}`);
+  }
+public addUser(user:any){
+  return this.httpClient.post(`${this.url1}users`,user);
+}
+
+
 
 }

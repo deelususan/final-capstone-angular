@@ -14,4 +14,5 @@ export class AppComponent {
   showTitle() {
     return this.title;
   }
+  img4 = "./assets/images/logo.jpg"
 }

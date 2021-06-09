@@ -10,23 +10,15 @@ import { ApiService } from 'src/app/api.service';
 })
 export class HomeComponent implements OnInit {
 
-   
-  constructor(private route: ActivatedRoute, private apiService:ApiService) { }
-  public cusine: string ;
-  product:any;
- 
 
-  
-ngOnInit(): void {
-  this.route.params.subscribe(params=>{ 
-     console.log(params);
-    this.cusine= params.cusine;
-    this.apiService.getAllProductsByCusine(this.cusine).subscribe(data=>{
-      console.log(data);
-      this.product = data;
-    })
-  });
+  constructor(private route: ActivatedRoute, private apiService: ApiService) { }
+  public cusine: string;
+  product: any;
 
 
-  }
+
+  ngOnInit(): void { }
+
+  img1 = "./assets/images/fooddelivery-image.jpg"
+
 }

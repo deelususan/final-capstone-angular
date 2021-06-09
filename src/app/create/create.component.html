@@ -1,3 +1,4 @@
+
 <h4>Product Form </h4>
 <div class="well well-lg">
     <form [formGroup]="productForm" class="form-horizontal" (ngSubmit)="submitForm(productForm)" novalidate>
@@ -26,11 +27,11 @@
         <div class="form-row">
 
             <div class="form-group col-md">
-                <label for="email">Description</label>
-                <input type="descr" class="form-control" formControlName="descr" name="descr" id="descr"
+                <label for="desc">Description</label>
+                <input type="text" class="form-control" formControlName="desc" name="desc" id="desc"
                     placeholder="Enter Description for the Dish">
-                <small *ngIf="hasError('descr')" [ngClass]="{'has-error' : hasError('descr') }">
-                    <span *ngIf="descr.errors.descr"> Please, enter a valid description here.</span>
+                <small *ngIf="hasError('desc')" [ngClass]="{'has-error' : hasError('desc') }">
+                    <span *ngIf="desc.errors.desc"> Please, enter a valid description here.</span>
                 </small>
 
             </div>
@@ -45,7 +46,8 @@
                 </small>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        <button type="submit" a href="/admin" class="btn btn-primary btn-block">Submit</button>
+
     </form>
 
 </div>

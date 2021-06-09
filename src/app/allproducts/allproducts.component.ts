@@ -37,6 +37,13 @@ export class AllproductsComponent implements OnInit {
 
 }
 
+edit(){
+  this.router.navigateByUrl('/updateproduct');
+}
+
+details(p_id){
+  this.router.navigateByUrl('/products/details/'+p_id);
+}
 
 }
 

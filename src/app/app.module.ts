@@ -9,13 +9,17 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { AllproductsComponent } from './allproducts/allproducts.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { CreateComponent } from './create/create.component';
+import { EditComponent } from './edit/edit.component';
+import { DetailsComponent } from './details/details.component';
+import { DeleteComponent } from './delete/delete.component';
+import { UserloginComponent } from './userlogin/userlogin.component';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +30,16 @@ import { CreateComponent } from './create/create.component';
     FooterComponent,
     NavbarComponent,
     NotfoundComponent,
-    ReactiveFormComponent,
     AboutusComponent,
     AllproductsComponent,
     LoginComponent,
     AdminComponent,
-    CreateComponent  ],
+    CreateComponent,
+    EditComponent,
+    DetailsComponent,
+    DeleteComponent,
+    UserloginComponent,
+    OrderComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

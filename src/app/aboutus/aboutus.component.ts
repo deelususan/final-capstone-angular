@@ -12,4 +12,5 @@ export class AboutusComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  img2= "./assets/images/food-prep.jpg"
 }

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-users',
@@ -7,42 +11,65 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  // data 
-  public username:string = "John Smith";
-  public age:number = 29;
-  public email:string = "john.smith@gmail.com";
-  public userImage:string = "./assets/images/smiley.jpg";
+  public userregnform :FormGroup;
+  submitted: boolean;
 
-  // object type -> custom type -> account
-  public account:Account = { id:100, name:"john Doe", age:30 , balance:15029.342  };
-  public color = { RED :'red', BLUE: 'blue', GREEN:'green' };
-  public count = 10;
-  public light:boolean = true;
-
-  constructor() { }
+  constructor(private formBuilder:FormBuilder, private apiService:ApiService,private router :Router) { }
 
   ngOnInit(): void {
+    this.userregnform = this.formBuilder.group({
+      fname : ['',[Validators.required, Validators.minLength(2), Validators.maxLength(16)]],
+      lname :['',[Validators.required, Validators.minLength(2), Validators.maxLength(16)]],
+      address: ['',[Validators.required]],
+      phone :['',Validators.required],
+      uname :['',Validators.required],
+      upass :['',Validators.required]
+    });
+  }
+  public hasError(field:any){
+    return (this.userregnform.get(field).invalid && this.userregnform.get(field).touched 
+    && this.userregnform.get(field).errors);
   }
 
+  public submitForm(form:any){
+    if(form.valid) {
+      this.submitted  = true;
+      this.apiService.addUser(this.userregnform.value).subscribe(res=> {
+        console.log(res);
+        this.router.navigateByUrl('/allproducts')
 
-  public increaseCounter(event){
-    //console.log("Event Trigger");
-    console.log(event);
-    this.count +=10;
+      
+      })
+    } else{
+      this.validateForm(form);
+    }
+    console.log(this.userregnform.value);
   }
 
-  public changeBgColor(){
-    this.light = !this.light;
+  
+  validateForm(form:any){
+    Object.keys(form.controls).forEach(field=>{
+      const control = form.get(field);
+      if( control instanceof FormControl){
+        control.markAsTouched({ onlySelf : true })
+      } else{
+        this.validateForm(control);
+      }
+    })
   }
-  public getClass(){
-    return 'bg-container3';
-  }
-}
 
-interface Account {
-  id:number;
-  name:string;
-  balance:number;
-  age :number;
-}
+    get fname() { return this.userregnform.get('fname')}
+    get lname() { return this.userregnform.get('lname')}
+    get address() { return this.userregnform.get('address')}
+    get phone() { return this.userregnform.get('phone')}
+    get uname() { return this.userregnform.get('uname')}
+    get upass() { return this.userregnform.get('upass')}
+  }
+
+  
+
+  
+
+
+
 

@@ -23,7 +23,7 @@ export class CreateComponent implements OnInit {
     this.productForm = this.formBuilder.group({
       cusine : ['',[Validators.required, Validators.minLength(2), Validators.maxLength(16)]],
       name :['',[Validators.required, Validators.minLength(2), Validators.maxLength(16)]],
-      descr: ['',[Validators.required]],
+      desc: ['',[Validators.required]],
       price:['',Validators.required]
     });
 
@@ -37,8 +37,11 @@ export class CreateComponent implements OnInit {
   public submitForm(form:any){
     if(form.valid) {
       this.submitted  = true;
-      this.apiService.createProduct(this.productForm.value).subscribe(res=> {
+      this.apiService.addProduct(this.productForm.value).subscribe(res=> {
         console.log(res);
+        this.router.navigateByUrl('/admin')
+
+      
       })
     } else{
       this.validateForm(form);
@@ -59,8 +62,8 @@ export class CreateComponent implements OnInit {
 
   get cusine() { return this.productForm.get('cusine')}
   get name() { return this.productForm.get('name')}
-  get descr() { return this.productForm.get('descr')}
+  get desc() { return this.productForm.get('descr')}
   get price() { return this.productForm.get('price')}
-
  
+
 }

@@ -3,11 +3,12 @@ import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  selector: 'app-order',
+  templateUrl: './order.component.html',
+  styleUrls: ['./order.component.css']
 })
-export class AdminComponent implements OnInit {
+export class OrderComponent implements OnInit {
+
 
   public  products :any;
   constructor(private apiservice: ApiService, private router: Router) { }
@@ -16,7 +17,6 @@ export class AdminComponent implements OnInit {
     // load get all products
     this.getAllProducts();
   }
-
   public getAllProducts(){
     this.apiservice.getAllProducts().subscribe( data => {
     console.log(data);
@@ -24,30 +24,12 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  create(){
-    this.router.navigateByUrl('/create');
-  }
-
   details(p_id){
     this.router.navigateByUrl('/products/details/'+p_id);
   }
-
-  delete(id){
-    this.apiservice.deleteProductById(id).subscribe(res =>{
-      this.router.navigateByUrl('/admin');
-    })
-  }
-
-  edit(id){
-      this.router.navigateByUrl('updateproduct/'+id);
-      this.apiservice.getOneProduct(id).subscribe( data => {
-        console.log(data);
-          this.products = data;
-        });
-      }
-        
-     
   
+  addtocart(p_id){
 
+  }
+  checkout(){}
 }
-
