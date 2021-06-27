@@ -13,6 +13,8 @@ import { DeleteComponent } from './delete/delete.component';
 import { DetailsComponent } from './details/details.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 import { OrderComponent } from './order/order.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { UserordersComponent } from './userorder/userorders.component'
 
 
 // create routes
@@ -29,7 +31,9 @@ const routes: Routes = [
   { path:'products/details/:id' , component:DetailsComponent },
   { path: 'delete', component:DeleteComponent},
   { path: 'userlogin', component:UserloginComponent},
-  { path: 'order', component:OrderComponent},
+  { path: 'order/:uname', component:OrderComponent},
+  { path: 'checkout', component:CheckoutComponent},
+  { path: 'userorders', component:UserordersComponent},
   { path: '**', component:NotfoundComponent},
 ];
 

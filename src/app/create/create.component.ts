@@ -65,5 +65,4 @@ export class CreateComponent implements OnInit {
   get desc() { return this.productForm.get('descr')}
   get price() { return this.productForm.get('price')}
  
-
 }

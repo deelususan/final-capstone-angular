@@ -36,7 +36,7 @@ export class UsersComponent implements OnInit {
       this.submitted  = true;
       this.apiService.addUser(this.userregnform.value).subscribe(res=> {
         console.log(res);
-        this.router.navigateByUrl('/allproducts')
+        this.router.navigateByUrl('/userlogin')
 
       
       })

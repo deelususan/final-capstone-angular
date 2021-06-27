@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { MessengerService } from '../messenger.service';
 
 @Component({
   selector: 'app-order',
@@ -9,27 +11,45 @@ import { ApiService } from '../api.service';
 })
 export class OrderComponent implements OnInit {
 
+  public ordersForm: FormGroup;
+  public products: any;
+  public orders: any;
+  public users: any;
+  public uname: String;
+  cartItems = [];
+  username:String;
+ // @Input() productItem: Products
 
-  public  products :any;
-  constructor(private apiservice: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, private router: Router, private msg: MessengerService) { }
 
   ngOnInit(): void {
+    this.uname = sessionStorage.getItem("username");
+
     // load get all products
     this.getAllProducts();
+
   }
-  public getAllProducts(){
-    this.apiservice.getAllProducts().subscribe( data => {
-    console.log(data);
+  public getAllProducts() {
+    this.apiService.getAllProducts().subscribe(data => {
+      console.log(data);
       this.products = data;
     });
   }
 
-  details(p_id){
-    this.router.navigateByUrl('/products/details/'+p_id);
+  details(p_id) {
+    this.router.navigateByUrl('/products/details/' + p_id);
   }
-  
-  addtocart(p_id){
+
+  addtocart(p_id) {
+    console.log(this.uname);
+    console.log(p_id);
+    this.msg.sendMsg(this.products);
+   this.apiService.addOrders(p_id);
+  // this.router.navigateByUrl('/userorders/');
 
   }
-  checkout(){}
+
+   checkout() {
+     this.router.navigateByUrl('/checkout');
+   }
 }

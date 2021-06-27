@@ -1,4 +1,8 @@
 .container {
     border: 2px solid red;
     padding: 30px;
-    background-color: pink; }
+
+
+    background-color: rgba(219, 175, 183, 0.39); 
+
+}

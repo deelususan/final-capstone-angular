@@ -20,6 +20,8 @@ import { DetailsComponent } from './details/details.component';
 import { DeleteComponent } from './delete/delete.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 import { OrderComponent } from './order/order.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { UserordersComponent } from './userorder/userorders.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { OrderComponent } from './order/order.component';
     DetailsComponent,
     DeleteComponent,
     UserloginComponent,
-    OrderComponent  ],
+    OrderComponent,
+    CheckoutComponent,
+    UserordersComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
